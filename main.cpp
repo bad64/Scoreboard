@@ -25,7 +25,7 @@ bool quit = false;
 
 SDL_Texture* Regenerate(SDL_Renderer* renderer, string text)
 {
-    TTF_Font* font = TTF_OpenFont("BNT.ttf", 200);
+    TTF_Font* font = TTF_OpenFont("font.ttf", 200);
     SDL_Color white = {255,255,255};
     SDL_Color green = {0,255,0};
     SDL_Surface* textbuf = TTF_RenderText_Shaded(font, text.c_str(), white, green);
