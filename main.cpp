@@ -1,6 +1,6 @@
 /*
 ##################################################
-# Scoreboard v1.0b by Bad64                      #
+# Scoreboard v1.1b by Bad64                      #
 #                                                #
 # It's super hacky and ugly, but it works !      #
 # Only works on Windows though.                  #
@@ -16,11 +16,12 @@
 
 using namespace std;
 
-HHOOK _hook_keyboard;
-KBDLLHOOKSTRUCT kbdStruct;
+/* Data to display */
 stringstream sstream;
 int wins, losses, draws = 0;
-SDL_Texture* scoreboard = nullptr;
+
+/* SDL stuff */
+SDL_Texture* scoreboard = NULL;
 bool quit = false;
 
 SDL_Texture* Regenerate(SDL_Renderer* renderer, string text)
@@ -35,19 +36,15 @@ SDL_Texture* Regenerate(SDL_Renderer* renderer, string text)
 
     return newtexture;
 }
-
-LRESULT __stdcall HookCallbackKeyboard(int nCode, WPARAM wParam, LPARAM lParam)
+int main(int argc, char* argv[])
 {
-    //Not too sure why, but the program can't be normally closed if I don't call this function
-    return CallNextHookEx(_hook_keyboard, nCode, wParam, lParam);
-}
-
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
-{
-    _hook_keyboard = SetWindowsHookEx(WH_KEYBOARD_LL, HookCallbackKeyboard, NULL, 0);
     MSG message = {0};
     int w, h = 0;
-    sstream << wins << "W/" << losses << "L/" << draws << "D";
+
+    if (argc == 2)
+        sstream << argv[1] << " " << wins << "W/" << losses << "L/" << draws << "D";
+    else
+        sstream << wins << "W/" << losses << "L/" << draws << "D";
 
     //Registering hotkeys
     if (RegisterHotKey(NULL, 1, 0, 0x70))
@@ -117,7 +114,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             default:
                 break;
             }
-            sstream << wins << "W/" << losses << "L/" << draws << "D";
+            if (argc == 2)
+                sstream << argv[1] << " " << wins << "W/" << losses << "L/" << draws << "D";
+            else
+                sstream << wins << "W/" << losses << "L/" << draws << "D";
         }
 
         if (!sstream.str().empty())
