@@ -1,0 +1,6 @@
+bin/*
+obj/*
+scoredeck.*
+*.dll
+*.txt
+*.ttf

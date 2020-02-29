@@ -3,6 +3,9 @@
  Hotkeyed scoreboard for streamers, with a nice green background for chroma keying in OBS or XSplit.
 Windows only, might port it to Linux some other day.
 
+**COMPILING**
+You will need to edit the Makefile to set up the path to your SDL libraries. Other than that, just run `make`.
+
 **HOW TO USE**
 
 First, place a font of your choice in the executable folder, and rename it "font.ttf". I use [Big Noodle Titling](https://www.dafont.com/bignoodletitling.font), but it should take any TrueType font.
