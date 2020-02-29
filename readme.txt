@@ -1,6 +1,4 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
- Hotkeyed scoreboard for streamers, with a nice green background for chroma keying in OBS or XSplit.
+Hotkeyed scoreboard for streamers, with a nice green background for chroma keying in OBS or XSplit.
 Windows only, might port it to Linux some other day.
 
 **HOW TO USE**
